@@ -148,9 +148,14 @@ style this element.
         },
 
         _dateChanged: function(event) {
-          if (event.detail.month && event.detail.year) {
-            this.value = event.detail.month + '/' + event.detail.year;
-          }
+          var month = event.detail.month || '';
+          var year = event.detail.year || '';
+          this.value = this._buildValue(month, year);
+        },
+
+        _buildValue: function(month, year){
+          if (!month && !year) return '';
+          return month + '/' + year;
         },
 
         _computeMonth: function(value) {

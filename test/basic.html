@@ -103,6 +103,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.equal(input.value, '11/15');
       });
 
+      test('when year is empty, value is month only', function() {
+        var input = fixture('basic');
+        input.$$('.paper-input-input').month = 12;
+        input.$$('.paper-input-input').year = '';
+        assert.equal(input.value, '12/');
+      });
+
+      test('when year is empty and month has only one digit, value is month only', function() {
+        var input = fixture('basic');
+        input.$$('.paper-input-input').month = 1;
+        input.$$('.paper-input-input').year = '';
+        assert.equal(input.value, '1/');
+      });
+
+      test('when both year and month are empty, value is empty', function() {
+        var input = fixture('basic');
+        input.$$('.paper-input-input').month = '';
+        input.$$('.paper-input-input').year = '';
+        assert.equal(input.value, '');
+      });
+
       test('empty required input shows error on blur', function(done) {
         var input = fixture('basic');
         forceXIfStamp(input);
