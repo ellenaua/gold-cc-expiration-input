@@ -155,6 +155,8 @@ style this element.
 
         _buildValue: function(month, year){
           if (!month && !year) return '';
+          // @TODO when only month is entered, return month without '/'
+          //if (!year) return month;
           return month + '/' + year;
         },
 
